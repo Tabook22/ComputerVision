@@ -1,6 +1,11 @@
 Matplotlib Library
 ------------------------------------
 Think of this library as a tool that helps you make all kinds of charts and graphs, like bar charts, line graphs, scatter plots, and many more.
+to install this library use the following code:
+pip install matplotlib
+
+to use it in your code using the following:
+import matplotlib.pylot
 
 matplotlib.pyplot
 -----------------------------------
