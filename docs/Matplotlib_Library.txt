@@ -1,0 +1,40 @@
+Matplotlib Library
+------------------------------------
+Think of this library as a tool that helps you make all kinds of charts and graphs, like bar charts, line graphs, scatter plots, and many more.
+
+matplotlib.pyplot
+-----------------------------------
+matplotlib.pyplot is a part of Matplotlib library, and it is used for plotting library used in Python for data visualization
+
+Pyplot module
+----------------------------------
+The pyplot module provides a simple and convenient way to create plots, and it is designed to be very similar to MATLAB's graphical plotting. 
+This makes it an excellent choice for scientists, engineers, and data analysts for creating detailed and high-quality figures.
+
+Here's a simple example to show you how it works. This code creates a line graph of numbers:
+
+***********************************
+import matplotlib.pyplot as plt
+
+# Data
+x = [0, 1, 2, 3, 4]
+y = [0, 1, 4, 9, 16]
+
+# Create a line plot
+plt.plot(x, y)
+
+# Add title and labels
+plt.title("A Simple Line Graph")
+plt.xlabel("X values")
+plt.ylabel("Y values")
+
+# Show the plot
+plt.show()
+*********************************
+
+In this example:
+
+plt.plot(x, y) plots the y values against the x values as a line graph.
+plt.title, plt.xlabel, and plt.ylabel add a title and labels to the graph.
+plt.show() displays the graph.
+So, matplotlib.pyplot allows you to create a variety of plots easily, making it simpler to understand and visualize your data.
