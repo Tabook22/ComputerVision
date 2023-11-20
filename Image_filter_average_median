@@ -1,0 +1,84 @@
+""
+This exercise is used to demonstrate the effect of both Average filtering and Median filtering on an image.
+
+#Adding Noise.
+The np.random.randint(-10, 11, base_image.shape) part of the code generates random integers between -10 and 10 for 
+each pixel in the base image, effectively introducing noise. This randomness can make some pixels darker or lighter 
+than they originally were, creating a noisy effect.
+
+"""
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.ndimage import uniform_filter, median_filter
+from matplotlib.widgets import Button
+import matplotlib.image as mpimg
+
+# Function to upload an image
+def upload_image():
+    # Replace with your image file path
+    img_path = 'nasser.png'
+    img = mpimg.imread(img_path)
+    if img.ndim == 3:
+        # Convert to grayscale if it's a color image
+        img = np.mean(img, axis=2)
+    return img
+
+# Function to add noise to an image
+def add_noise(image):
+    noise = np.random.randint(-25, 26, image.shape)
+    noisy_image = image + noise
+    #this function returns a new image with noise
+    return np.clip(noisy_image, 0, 255)  # Clipping to keep pixel values between 0 and 255
+
+# Function to apply filters
+def apply_filters(noisy_image):
+    average_filtered = uniform_filter(noisy_image, size=3) # appling Average filter of size 3x3
+    median_filtered = median_filter(noisy_image, size=3) # appling Median filter of size 3x3
+    #here we are going to return two new images
+    return average_filtered, median_filtered
+
+# Function to display images
+def display_images(images, titles):
+    plt.figure(figsize=(15, 5))
+    for i, (image, title) in enumerate(zip(images, titles)):
+        plt.subplot(1, len(images), i + 1)
+        plt.imshow(image, cmap='gray')
+        plt.title(title)
+        plt.axis('off')
+    plt.show()
+
+# Main code
+original_image = upload_image()
+noisy_image = add_noise(original_image)
+average_filtered_image, median_filtered_image = apply_filters(noisy_image)
+
+#The display image function will take two paramenters, the list of images to be displayed and the titles of these images
+display_images(
+    [original_image, noisy_image, average_filtered_image, median_filtered_image],
+    ["Original Image", "Noisy Image", "Average Filtered", "Median Filtered"]
+)
+
+
+if __name__=="__main__":
+    # First we call the image, Upload the image
+    # Second we apply the filters (Average Fiter and Median Filter)
+    # Third we are going to diplay the images
+    
+    #upload the images
+    myimg = upload_image()
+    
+    # Add noise to the uploaded image
+    addnoise = add_noise(myimg)
+    
+    # Apply the average filter and median filter
+    average_filtered_image, median_filtered_image = apply_filters(addnoise)
+    
+    # Display the images
+    #fist list of images
+    titles = ["Original Image", "Noisy Image", "Average Filtered Image", "Median Filtered Image"]
+    
+    #second list of titles
+    images = [myimg, addnoise, average_filtered_image, median_filtered_image]
+    
+    #call the function which will display the images
+    display_images(images, titles)
