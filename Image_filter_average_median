@@ -15,7 +15,7 @@ import matplotlib.image as mpimg
 
 # Function to upload an image
 def upload_image():
-    # Replace with your image file path
+    # Replace with your image file path, the nasser.png image which we used in this example it is in the same folder as main.py
     img_path = 'nasser.png'
     img = mpimg.imread(img_path)
     if img.ndim == 3:
